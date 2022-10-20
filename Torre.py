@@ -3,13 +3,7 @@ class Torre:
         self._discos = discos
     
     def empilha(self,disco):
-        if self.get_tamanho() == 0:
-            self._discos.append(disco)
-        else:
-            if int(self.last_disco()) > disco:
-                self._discos.append(disco)
-            else:
-                print('Não é possivel inserir esse disco')
+        return self._discos.append(disco)
     
     def desempilha(self):
         return self._discos.pop()
@@ -38,5 +32,6 @@ class Torre:
         for disco in self._discos:
             color += i
             i += 1
-            text = '\033[1;{color};40m' + str(disco) +'\033[0;0m'
-            print(text.format(color=int(color)))
+            
+            text = ('\033[1;{color};40m' + str(disco) +'\033[0;0m').format(color=int(color))
+            print(text)
