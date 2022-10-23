@@ -24,14 +24,20 @@ def color(color, text):
     return text.format(color=int(color))
 
 if __name__ == '__main__':
-    qntd = int(input('Digite a quantidade de discos para ser inserido na torre 1: '))
+    qntd = int(input("Digite a quantidade de discos para ser inserido na torre 1: "))
+    while qntd < 3 or qntd > 8:
+        print("Quantidade minima 3 e máxima 8")
+        qntd = int(input("Digite a quantidade de discos para ser inserido na torre 1: "))
+
     discos = []
     for i in range(-qntd, 0):
         discos.append(-i)
 
     torres = [Torre(discos),Torre([]),Torre([])]
-    i = len(torres)
-    while torres[i-1].get_tamanho() != qntd:
+    while torres[len(torres)-1].get_tamanho() != qntd:
+        print('\n Mover disco: ')
+        mover_disco(int(input('Digite a origem: ')), int(input('Digite o destino: ')))
+
         print(color(33, '\n Torre 1:'))
         torres[0].to_string()
         print(color(34, '\n Torre 2:'))
@@ -39,14 +45,4 @@ if __name__ == '__main__':
         print(color(35, '\n Torre 3:'))
         torres[2].to_string()
 
-        print('\n Mover disco: ')
-        mover_disco(int(input('Digite a origem: ')), int(input('Digite o destino: ')))
-
-print(color(33, '\n Torre 1:'))
-torres[0].to_string()
-print(color(34, '\n Torre 2:'))
-torres[1].to_string()
-print(color(35, '\n Torre 3:'))
-torres[2].to_string()
-
-print('\n Parabéns Você terminou a Torre de Hanoi!')        
+    print('\n Parabéns Você terminou a Torre de Hanoi!')

@@ -15,7 +15,7 @@ class Torre:
         if self.get_tamanho() == 0:
             return 0
         else:
-            return self._discos[len(self._discos)-1]
+            return self._discos[self.get_tamanho()-1]
 
     def find_disco(self, disco):
         for i in self._discos:
